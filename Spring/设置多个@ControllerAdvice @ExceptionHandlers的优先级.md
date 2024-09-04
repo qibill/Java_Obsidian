@@ -1,0 +1,39 @@
+从Spring 4.3.7开始，Spring MVC的行为如下：它使用HandlerExceptionResolver实例来处理由处理程序方法引发的异常。
+
+
+默认情况下，Web MVC配置注册一个HandlerExceptionResolverbean HandlerExceptionResolverComposite，即
+
+
+委托其他名单HandlerExceptionResolvers。
+
+
+那些其他解析器是
+
+
+ExceptionHandlerExceptionResolver
+
+ResponseStatusExceptionResolver
+
+DefaultHandlerExceptionResolver
+
+以该顺序注册。出于这个问题的目的，我们只关心ExceptionHandlerExceptionResolver。
+
+
+一AbstractHandlerMethodExceptionResolver，通过解析异常@ExceptionHandler的方法。
+
+
+在上下文初始化时，Spring将为它检测到的ControllerAdviceBean每个带@ControllerAdvice注释的类生成一个。该ExceptionHandlerExceptionResolver会从上下文检索这些，并使用排序，使用AnnotationAwareOrderComparator其
+
+
+是对扩展的OrderComparator支持，它支持Spring的Ordered 接口以及 **@Order** 和 **@Priority** 批注，并由Ordered实例提供的订单值覆盖静态定义的批注值（如果有）。
+
+
+然后，ExceptionHandlerMethodResolver将为每个这些ControllerAdviceBean实例注册一个（将可用@ExceptionHandler方法映射到它们打算处理的异常类型）。最后，将它们以相同的顺序添加到中LinkedHashMap（保留迭代顺序）。
+
+
+当发生异常时，ExceptionHandlerExceptionResolver会遍历这些异常ExceptionHandlerMethodResolver并使用可以处理异常的第一个异常。
+
+
+因此，这里的一点是：如果你有一个@ControllerAdvice带有@ExceptionHandler用于Exception该被另一注册前@ControllerAdvice与类@ExceptionHandler的更具体的例外，比如IOException，是第一个将被调用。如前所述，您可以通过@ControllerAdvice实现Ordered带注释的类或用@Order或对其进行注释@Priority并为其指定适当的值来控制该注册顺序。
+
+没有@Order批注的所有控制器的默认默认顺序为Ordered＃LOWEST_PRECEDENCE
