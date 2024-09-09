@@ -10,3 +10,4 @@
 
 *   **fixbug**：fixbug分支是从master分支上面分出来的。fix结束以后，再合并进Master和Develop分支。最后，删除"fixbug分支"。
 
+![分支管理](https://i-blog.csdnimg.cn/blog_migrate/d8b418517a03a0cff54cf8bd94be3d49.png)
