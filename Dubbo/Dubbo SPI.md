@@ -12,11 +12,7 @@ Protocol protocol = ExtensionLoader.getExtensionLoader(Protocol.class).getExtens
 
 sequenceDiagram
 
-  
-
 Title: 简单逻辑
-
-  
 
 ExtensionLoader->> ExtensionLoader(T): getExtensionLoader(Class<T> type)
 
