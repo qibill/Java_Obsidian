@@ -1,5 +1,5 @@
 ## 参数的流程
-```
+```mermaid
 graph TD
 y[参数]-->A
 A[? extends OncePerRequestFilter]-->B[DispatcherServlet]

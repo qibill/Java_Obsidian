@@ -18,7 +18,7 @@
 ### Spring怎么解决循环依赖
 Spring的循环依赖的理论依据其实是基于Java的引用传递，当我们获取到对象的引用时，对象的field或则属性是可以延后设置的(但是构造器必须是在获取引用之前)。
 
-Spring的单例对象的初始化主要分为三步： 
+Spring的单例对象的初始化主要分为三步（[[bean的生命周期]]）： 
 
 ![image](https://img-blog.csdn.net/20170912091609918?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMDg1MzI2MQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
