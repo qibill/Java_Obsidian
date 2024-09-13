@@ -273,8 +273,3 @@ java.lang.Exception: Resource throw Exception
 ```
 
 复制代码可以发现，异常信息中多了一个Suppressed的提示，告诉我们这个异常其实由两个异常组成，Close method throw Exception这个异常是被Suppressed【屏蔽】的异常
-
-作者：何甜甜在吗
-链接：https://juejin.im/post/5b8f9fa05188255c6f1df755
-来源：掘金
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。

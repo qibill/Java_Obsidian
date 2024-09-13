@@ -140,7 +140,7 @@ protected void addSingleton(String beanName, Object singletonObject) {
     }
 }
 ```
-该方法是在 #doGetBean(...)方法中，一级缓存里面是完整的Bean
+该方法是在 doGetBean(...)方法中，一级缓存里面是完整的Bean
 ### 总结
 一级缓存里面是完整的Bean,是当一个Bean完全创建后才put
 
