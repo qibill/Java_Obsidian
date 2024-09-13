@@ -18,6 +18,7 @@ Spring事务隔离级别比数据库事务隔离级别多一个default
 这是花费最高代价但是最可靠的事务隔离级别，事务被处理为顺序执行。除了防止脏读、不可重复读外，还避免了幻像读。 
 
 ### 二、Spring事务传播属性
+默认 **PROPAGATION\_REQUIRED** ，如果存在一个事务，则支持当前事务。如果没有事务则开启一个新的事务。
 ![image](https://img-blog.csdn.net/20170420212829825?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvc29vbmZseQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 **propagation（单词含义：传播）**
