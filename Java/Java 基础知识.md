@@ -35,6 +35,8 @@ Java 对象实现序列化要实现 Serializable 接口。
 *   String 由 char\[] 数组构成，使用了 final 修饰，是不可变对象，可以理解为常量，线程安全；对 String 进行改变时每次都会新生成一个 String 对象，然后把指针指向新的引用对象。
 *   StringBuffer 线程安全；StringBuiler 线程不安全。
 *   操作少量字符数据用 String；单线程操作大量数据用 StringBuilder；多线程操作大量数据用 StringBuffer。
+##### 能继承string类
+不可以，因为String类有final修饰符，而final修饰的类是不能被继承的，实现细节不允许改变。
 
 ### 5. 重载与重写
 
@@ -46,7 +48,13 @@ Java 对象实现序列化要实现 Serializable 接口。
 *   修饰基本类型变量，一经出初始化后就不能够对其进行修改。
 *   修饰引用类型变量，不能够指向另一个引用。
 *   修饰类或方法，不能被继承或重写。
+##### final，finally，finalize的区别
 
+  final—修饰符（关键字）如果一个类被声明为final，意味着它不能再派生出新的子类，不能作为父类被继承。将变量或方法声明为final，可以保证它们在使用中不被改变。被声明为final的变量必须在声明时给定初值，而在以后的引用中只能读取，不可修改。被声明为final的方法也同样只能使用，不能重载。 
+  
+  finally—再异常处理时提供 finally 块来执行任何清除操作。如果抛出一个异常，那么相匹配的 catch 子句就会执行，然后控制就会进入 finally 块（如果有的话）。 
+  
+  finalize—方法名。Java 技术允许使用 finalize() 方法在垃圾收集器将对象从内存中清除出去之前做必要的清理工作。
 ### 7. 反射
 
 *   在运行时动态的获取类的完整信息
@@ -102,38 +110,16 @@ Java 对象实现序列化要实现 Serializable 接口。
 *   LinkedHashSet LinkedHashSet 继承于 HashSet，并且其内部是通过 LinkedHashMap 来实现的。
 *   TreeSet 红黑树实现有序唯一。
 
+##### Collection和Collections
+java.util.Collection 是一个集合接口。它提供了对集合对象进行基本操作的通用接口方法。Collection接口在Java 类库中有很多具体的实现。Collection接口的意义是为各种具体的集合提供了最大化的统一操作方式。
+java.util.Collections 是一个包装类。它包含有各种有关集合操作的静态多态方法。此类不能实例化，就像一个工具类，服务于Java的Collection框架。
+Collections的构造方法是被私有化了的，以此来达到不被实例化的目的。
+
+##### List，set，map继承Collection
+List，set继承Collection
 ## 三、Java 多线程
 
-### 1. synchronized
-
-*   修饰代码块 底层实现，通过 monitorenter & monitorexit 标志代码块为同步代码块。
-*   修饰方法 底层实现，通过 ACC\_SYNCHRONIZED 标志方法是同步方法。
-*   修饰类 class 对象时，实际锁在类的实例上面。
-*   单例模式
-
-```java
-public class Singleton {
-
-    private static volatile Singleton instance = null;
-
-    private Singleton(){}
-
-    public static Singleton getInstance(){
-    if (null == instance) {
-        synchronized (Singleton.class) {
-            if (null == instance) {
-            instance = new Singleton();
-            }
-        }
-      }
-        return instance;
-        }
-}
-```
-
-*   偏向锁，自旋锁，轻量级锁，重量级锁
-    *   通过 synchronized 加锁，第一个线程获取的锁为偏向锁，这时有其他线程参与锁竞争，升级为轻量级锁，其他线程通过循环的方式尝试获得锁，称自旋锁。若果自旋的次数达到一定的阈值，则升级为重量级锁。
-    *   需要注意的是，在第二个线程获取锁时，会先判断第一个线程是否仍然存活，如果不存活，不会升级为轻量级锁。
+### 1. [[synchronized]]
 
 ### 2. Lock
 
