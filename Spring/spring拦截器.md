@@ -1,17 +1,17 @@
 
 ```
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/**"/>
-			<!-- <mvc:mapping path="/item/**"/> -->
-			<bean class="com.taotao.portal.interceptor.Interceptor1"></bean>
-		</mvc:interceptor>
-				<mvc:interceptor>
-			<mvc:mapping path="/**"/>
-			<!-- <mvc:mapping path="/item/**"/> -->
-			<bean class="com.taotao.portal.interceptor.Interceptor2"></bean>
-		</mvc:interceptor>
-	</mvc:interceptors>
+<mvc:interceptors>
+    <mvc:interceptor>
+        <mvc:mapping path="/**"/>
+        <!-- <mvc:mapping path="/item/**"/> -->
+        <bean class="com.taotao.portal.interceptor.Interceptor1"></bean>
+    </mvc:interceptor>
+            <mvc:interceptor>
+        <mvc:mapping path="/**"/>
+        <!-- <mvc:mapping path="/item/**"/> -->
+        <bean class="com.taotao.portal.interceptor.Interceptor2"></bean>
+    </mvc:interceptor>
+</mvc:interceptors>
 ```
 
 
