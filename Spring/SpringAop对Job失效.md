@@ -159,7 +159,6 @@ public class QuartzConfig implements ApplicationContextAware {
 
 Job也需要加上注解@Component
 
-
 ```
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;

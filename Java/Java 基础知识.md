@@ -36,7 +36,13 @@ Java 对象实现序列化要实现 Serializable 接口。
 *   StringBuffer **线程安全** ；StringBuiler **线程不安全**。
 *   操作少量字符数据用 String；单线程操作大量数据用 StringBuilder；多线程操作大量数据用 StringBuffer。
 ##### 能继承string类
-不可以，因为String类有final修饰符，而final修饰的类是不能被继承的，实现细节不允许改变。
+	不可以，因为String类有final修饰符，而final修饰的类是不能被继承的，实现细节不允许改变。
+##### Math.round(11.5) 和 Math.round(-11.5)
+	Math.round(11.5)=12
+    Math.round(-11.5)=-11
+    Math.ceil()用作向上取整。
+    Math.floor()用作向下取整。
+    Math.round() 我们数学中常用到的四舍五入取整。
 
 ### 5. 重载与重写
 
