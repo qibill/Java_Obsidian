@@ -2,7 +2,7 @@
 
 - 键值(Key-Value)存储数据库
 
-相关产品： Tokyo Cabinet/Tyrant、Redis、Voldemort、Berkeley DB
+相关产品： Tokyo Cabinet/Tyrant、[[Redis]]、Voldemort、Berkeley DB
 
 典型应用： 内容缓存，主要用于处理大量数据的高访问负载。 
 
