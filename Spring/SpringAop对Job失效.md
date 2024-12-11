@@ -5,7 +5,7 @@
    - 在Spring与Quartz集成时，用到了org.springframework.scheduling.quartz.SchedulerFactoryBean这个类。
 
 
-```
+```java
 // Get Scheduler instance from SchedulerFactory.
         try {
             this.scheduler = createScheduler(schedulerFactory, this.schedulerName);
@@ -29,7 +29,7 @@
 - 由于将Scheduler交给Spring生成， SchedulerFactoryBean有个jobFactory属性 而且jobFactory是实现SchedulerContextAware的类还要继承AdaptableJobFactory。
 - 在Spirng-context-support jar包下org.springframework.scheduling.quartz包中有个SpringBeanJobFactory的类继承了AdaptableJobFactory实现AdaptableJobFactory，spring会默认使用这个给jobFactory，我们可以继承SpringBeanJobFactory重写他的createJobInstance方法
 
-```
+```java
 import org.quartz.SchedulerContext;
 import org.quartz.spi.TriggerFiredBundle;
 import org.springframework.beans.BeanWrapper;
@@ -102,7 +102,7 @@ public class JobBeanFactory extends SpringBeanJobFactory {
 当Spring在加载配置文件时，如果配置文件中有Bean实现了ApplicationContextAware接口时,Spring会自动调用setApplicationContext方法,我们可以通过这个获取Spring上下文然后在创建Job时让Job自动注入到Spring容器中
 
 
-```
+```java
 import com.qibill.factory.JobBeanFactory;
 import com.qibill.job.QuartzJob;
 import org.quartz.*;
@@ -159,7 +159,7 @@ public class QuartzConfig implements ApplicationContextAware {
 
 Job也需要加上注解@Component
 
-```
+```java
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.slf4j.Logger;
