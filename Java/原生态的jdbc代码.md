@@ -1,5 +1,5 @@
 
-```
+```java
 public class jdbc {
     public static void main(String[] args) {
     	Connection connection = null;

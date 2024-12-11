@@ -9,7 +9,7 @@
 8. 如果桶满了（容量16*加载因子0.75），就需要扩容resize(扩容2倍后重排)
 
 
-```
+```java
 final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) {
         Node<K,V>[] tab; Node<K,V> p; int n, i;
         //1. 如果HashMap未被初始化，则初始化
@@ -62,7 +62,7 @@ final V putVal(int hash, K key, V value, boolean onlyIfAbsent, boolean evict) {
 
 
 ## 扩容机制
-```
+```java
 final Node<K,V>[] resize() {
     Node<K,V>[] oldTab = table;//首次初始化后table为Null
     int oldCap = (oldTab == null) ? 0 : oldTab.length;

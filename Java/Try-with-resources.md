@@ -1,6 +1,6 @@
 JDK7之前资源的关闭姿势：
 
-```
+```java
 /**
  * jdk7以前关闭流的方式
  *
@@ -32,7 +32,7 @@ Resource的定义：所有实现了 [java.lang.AutoCloseable](https://docs.oracl
 简单Demo进行证实：
 实现java.lang.AutoCloseable接口的Resource类：
 
-```
+```java
 /**
  * 资源类
  * 
@@ -52,7 +52,7 @@ public class Resource implements AutoCloseable {
 
 复制代码测试类CloseResourceIn7.java
 
-```
+```java
 /**
  * jdk7及以后关闭流的方式
  *
@@ -75,7 +75,7 @@ Resource is closed
 复制代码当存在多个打开资源的时候：
 资源二Resource2.java
 
-```
+```java
 /**
  * 资源2
  * 
@@ -95,7 +95,7 @@ public class Resource2 implements AutoCloseable {
 
 复制代码测试类CloseResourceIn7.java
 
-```
+```java
 /**
  * jdk7及以后关闭流的方式
  *
@@ -126,7 +126,7 @@ Resource is closed
 那么它的底层原理又是怎样的呢，由皮皮甜独家揭秘优雅关闭资源背后的密码
 查看编译的class文件CloseResourceIn7.class：
 
-```
+```java
 public class CloseResourceIn7 {
     public CloseResourceIn7() {
     }
@@ -169,7 +169,7 @@ finally中的var2.addSuppressed(var11);是不是有疑问🤔️
 我们将代码修改一下
 资源Resource.java
 
-```
+```java
 /**
  * 资源类
  *
@@ -190,7 +190,7 @@ public class Resource implements AutoCloseable {
 复制代码两个方法里面都抛出异常
 测试类CloseResourceIn7.java
 
-```
+```java
 /**
  * jdk7及以后关闭流的方式
  *
@@ -224,7 +224,7 @@ public class CloseResourceIn7 {
 
 复制代码打印结果：
 
-```
+```java
 java.lang.Exception: Close method throw Exception
 	at com.shuwen.Resource.close(Resource.java:15)
 	at com.shuwen.CloseResourceIn7.errorTest(CloseResourceIn7.java:27)
@@ -234,7 +234,7 @@ java.lang.Exception: Close method throw Exception
 复制代码只打印了最后出现的异常【异常屏蔽】这样会给开发人员排查错误带来一定的困难
 我们换成try-with-resource方法实现CloseResourceIn7.java
 
-```
+```java
 /**
  * jdk7及以后关闭流的方式
  *
@@ -261,7 +261,7 @@ public class CloseResourceIn7 {
 
 复制代码打印信息：
 
-```
+```java
 java.lang.Exception: Resource throw Exception
 	at com.shuwen.Resource.sayHello(Resource.java:10)
 	at com.shuwen.CloseResourceIn7.errorTest(CloseResourceIn7.java:20)
