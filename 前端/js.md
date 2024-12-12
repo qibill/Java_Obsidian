@@ -1,6 +1,6 @@
 
 ## JavaScript中textContent、innerText和innerHTML的用法以及区别
-```
+```js
 <div class="btm3"> 
     <div>Viserion</div>
 </div>
@@ -27,7 +27,7 @@ Viserion
 6.innerHTML才是真正的获取标签中间的所有内容
 
 
-```
+```js
 <div>Viserion</div>
 ```
 
